@@ -1,46 +1,36 @@
 # Vector Index Sizer
 
-<p align="center">
-  <img src="assets/readme-cover.svg" alt="Vector Index Sizer cover" width="100%" />
-</p>
+| | |
+| --- | --- |
+| Focus | vector search sizing |
+| Command | `vector-index-sizer` |
+| Inputs | text, JSON, JSONL, or CSV |
+| Output | Markdown or JSON |
 
-![stack](https://img.shields.io/badge/stack-Python-7c3aed?style=flat-square) ![python](https://img.shields.io/badge/python-3.11-0891b2?style=flat-square) ![license](https://img.shields.io/badge/license-MIT-b45309?style=flat-square) ![ci](https://img.shields.io/badge/ci-GitHub%20Actions-be185d?style=flat-square)
+![Vector Index Sizer cover](assets/readme-cover.svg)
 
-Estimate vector index footprint and flag capacity risks from planning notes.
+Estimate vector index footprint and flag capacity risks from planning notes. I keep it small because this kind of check is most useful when it can run beside the work, not after the work has already shipped.
 
-## The short version
+## Policy surface
 
-`vector-index-sizer` is intentionally small: feed it a file, get deterministic findings, and decide whether the result should block a merge or just guide cleanup.
-
-## Rule surface
-
-| Rule | Severity | What it catches |
+| Rule | Level | Why it matters |
 | --- | --- | --- |
 | `huge-document-count` | high | document count is very large |
 | `large-dimensions` | medium | embedding dimension is large |
 | `no-compression` | low | compression is not configured |
 
-## Usage
+## Local run
 
 ```bash
+git clone https://github.com/mertefekurt/vector-index-sizer.git
+cd vector-index-sizer
+python -m venv .venv
+source .venv/bin/activate
 python -m pip install -e ".[dev]"
 vector-index-sizer examples/sample.txt
-vector-index-sizer examples/sample.txt --json --fail-on medium
+vector-index-sizer examples/sample.txt --json
 ```
 
-## Useful defaults
+## Why the sample fails
 
-| Option | Reason |
-| --- | --- |
-| `--json` | machine-readable output for scripts |
-| `--fail-on medium` | stricter CI gate when warnings matter |
-| `--format auto` | let the reader detect text, CSV, JSON, or JSONL |
-
-## Local checks
-
-```bash
-python -m pip install -e ".[dev]"
-ruff check .
-pytest
-python -m vector_index_sizer --help
-```
+`documents 10000000 dimensions 3072 replicas 3 compression none` is intentionally shaped to hit the rules above, so it is useful as a quick smoke test after edits.
