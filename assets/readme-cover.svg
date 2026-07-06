@@ -1,10 +1,30 @@
 <svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vector Index Sizer cover">
-  <rect width="1280" height="420" rx="28" fill="#18122b"/>
 
-  <rect x="86" y="82" width="360" height="256" rx="34" fill="#7c3aed" opacity=".18"/>
-  <path d="M162 154h208M162 214h128M162 274h176" stroke="#faf5ff" stroke-width="15" stroke-linecap="round"/>
-  <text x="502" y="185" fill="#faf5ff" font-family="Aptos, Segoe UI, ui-sans-serif, system-ui" font-size="53" font-weight="800">Vector Index Sizer</text>
-  <text x="506" y="246" fill="#e9d5ff" font-family="Aptos, Segoe UI, ui-sans-serif, system-ui" font-size="24">Focused CLI for vector search sizing</text>
-  <rect x="506" y="282" width="360" height="44" rx="22" fill="#ec4899" opacity=".18"/>
-  <text x="528" y="311" fill="#faf5ff" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">DEVELOPER TOOLS</text>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fb923c" stop-opacity=".34"/>
+      <stop offset=".54" stop-color="#2a1711" stop-opacity="0"/>
+      <stop offset="1" stop-color="#f43f5e" stop-opacity=".30"/>
+    </linearGradient>
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="80" result="noise"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .10"/></feComponentTransfer>
+      <feBlend mode="soft-light" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="420" rx="30" fill="#2a1711"/>
+  <rect width="1280" height="420" rx="30" fill="url(#g)" filter="url(#grain)"/>
+
+  <rect x="0" y="0" width="426" height="420" fill="#fb923c" opacity=".18"/>
+  <path d="M102 304c116-58 246-64 360-4 114 60 246 72 410-10 152-76 260-66 328-30" stroke="#f43f5e" stroke-width="14" stroke-linecap="round" opacity=".64"/>
+  <text x="92" y="166" fill="#fff7ed" font-family="Sora, ui-sans-serif, system-ui" font-size="60" font-weight="850">Vector Index Sizer</text>
+  <text x="96" y="226" fill="#fed7aa" font-family="Sora, ui-sans-serif, system-ui" font-size="23">Estimate vector index footprint and flag capacity...</text>
+  <text x="96" y="286" fill="#f43f5e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="800">DEVELOPER TOOL</text>
+  <rect x="846" y="122" width="172" height="28" rx="8" fill="#fb923c" opacity=".85"/>
+  <text x="862" y="141" fill="#fff7ed" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">huge-document-count</text>
+  <rect x="846" y="176" width="224" height="28" rx="8" fill="#f43f5e" opacity=".85"/>
+  <text x="862" y="195" fill="#fff7ed" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">large-dimensions</text>
+  <rect x="846" y="230" width="270" height="28" rx="8" fill="#fb923c" opacity=".85"/>
+  <text x="862" y="249" fill="#fff7ed" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">no-compression</text>
 </svg>
